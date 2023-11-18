@@ -114,8 +114,14 @@ internal class Program
 		Console.WriteLine(carManager.Add(car1).Message);
         car1.Plaque = "34abc034";//Geçersiz veri girişi olmaması için 6 karakterden fazla giriş yapıyoruz.
 		Console.WriteLine(carManager.Add(car1).Message);
-		//silmek istediğimiz veri girişini yaparken id sini de girmeliyiz.
-		Car deleteCar = carManager.Get(c=>c.Plaque== "34abc034").Data; //veritabanından plakasına göre arama yapıp silmek istediğimiz veriyi alıyoruz, çünkü bize idsi gerekli.
-		Console.WriteLine(carManager.Delete(car1).Message);        
+		//veritabanından plakasına göre arama yapıp güncellemek istediğimiz veriyi alıyoruz, çünkü bize idsi gerekli.
+		Car updateCar = carManager.Get(c => c.Plaque == "34abc034").Data; 
+        //veriyi güncelliyoruz.
+        updateCar.RentPrice = 2500;
+		Console.WriteLine(carManager.Update(car1).Message);
+		//veritabanından plakasına göre arama yapıp silmek istediğimiz veriyi alıyoruz, çünkü bize idsi gerekli.
+		Car deleteCar = carManager.Get(c=>c.Plaque== "34abc034").Data; 
+		Console.WriteLine(carManager.Delete(car1).Message);
+		
 	}
 }
